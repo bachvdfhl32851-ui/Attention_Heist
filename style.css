@@ -1,22 +1,23 @@
 :root {
-  --bg: #fff4de;
-  --surface: rgba(255, 255, 255, 0.66);
+  --bg: #eaf8fc;
+  --surface: rgba(255, 255, 255, 0.7);
   --surface-solid: #ffffff;
-  --ink: #3b1a28;
-  --muted: #6f4a58;
-  --line: rgba(59, 26, 40, 0.18);
-  --accent: #b03560;
-  --accent-dark: #8c2548;
-  --accent-soft: #ffced8;
+  --ink: #1b365d;
+  --muted: #46618a;
+  --line: rgba(27, 54, 93, 0.18);
+  --accent: #005a9c;
+  --accent-dark: #1b365d;
+  --accent-soft: #a0e0ef;
   --on-accent: #ffffff;
-  --focus: #1f5fae;
-  --peach: #ffe8c4;
-  --blush: #ffdddd;
-  --pink: #ffced8;
-  --aura-1: #ffced8;
-  --aura-2: #ffdddd;
-  --aura-3: #ffe8c4;
-  --shadow: 0 1px 2px rgba(74, 38, 52, 0.06), 0 14px 34px -14px rgba(201, 69, 111, 0.28);
+  --focus: #c25b00;
+  --peach: #d6f1f8;
+  --blush: #bfe9f3;
+  --pink: #a0e0ef;
+  --sky: #60c1e5;
+  --aura-1: #a0e0ef;
+  --aura-2: #60c1e5;
+  --aura-3: #d6f1f8;
+  --shadow: 0 1px 2px rgba(27, 54, 93, 0.06), 0 14px 34px -14px rgba(0, 90, 156, 0.3);
 
   --font-display: "Fraunces", "Georgia", "Times New Roman", serif;
   --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -36,7 +37,7 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: clip;
-  background: linear-gradient(165deg, #ffdddd 0%, var(--bg) 42%, #ffe8c4 100%) fixed;
+  background: linear-gradient(165deg, #cdeef7 0%, var(--bg) 45%, #bfe9f3 100%) fixed;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 1.0625rem;
@@ -55,7 +56,7 @@ body::after {
   height: 60vmax;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 1;
+  opacity: 0.7;
   pointer-events: none;
   will-change: transform;
 }
@@ -292,7 +293,7 @@ noscript p { margin: 2rem auto; width: min(100% - 2.5rem, var(--col)); padding: 
   display: block;
   width: 92px;
   margin-bottom: 1.75rem;
-  fill: rgba(255, 206, 216, 0.6);
+  fill: rgba(160, 224, 239, 0.6);
   stroke: var(--accent);
   stroke-width: 1.4;
   stroke-linejoin: round;
@@ -316,7 +317,7 @@ noscript p { margin: 2rem auto; width: min(100% - 2.5rem, var(--col)); padding: 
   aspect-ratio: 1;
   transform: translateY(-50%);
   border-radius: 50%;
-  background: repeating-radial-gradient(circle, transparent 0 26px, rgba(176, 53, 96, 0.16) 26px 27px);
+  background: repeating-radial-gradient(circle, transparent 0 26px, rgba(0, 90, 156, 0.18) 26px 27px);
   -webkit-mask: radial-gradient(circle, #000 15%, transparent 68%);
   mask: radial-gradient(circle, #000 15%, transparent 68%);
   z-index: -1;
@@ -335,7 +336,7 @@ noscript p { margin: 2rem auto; width: min(100% - 2.5rem, var(--col)); padding: 
   top: 0; left: 50%;
   width: 100vw; height: 54px;
   transform: translateX(-50%);
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 54' preserveAspectRatio='none'%3E%3Cpath d='M0 27 Q 150 0 300 27 T 600 27 T 900 27 T 1200 27 V54 H0Z' fill='%23ffced8' fill-opacity='.7'/%3E%3Cpath d='M0 38 Q 150 14 300 38 T 600 38 T 900 38 T 1200 38 V54 H0Z' fill='%23ffe8c4'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 54' preserveAspectRatio='none'%3E%3Cpath d='M0 27 Q 150 0 300 27 T 600 27 T 900 27 T 1200 27 V54 H0Z' fill='%2360c1e5' fill-opacity='.4'/%3E%3Cpath d='M0 38 Q 150 14 300 38 T 600 38 T 900 38 T 1200 38 V54 H0Z' fill='%23a0e0ef' fill-opacity='.8'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   z-index: -1;
 }
 
@@ -359,10 +360,9 @@ noscript p { margin: 2rem auto; width: min(100% - 2.5rem, var(--col)); padding: 
   background: rgba(255, 255, 255, 0.6);
 }
 .intro-text .stats li:first-child { border-top: 0; }
-.intro-text .stats li:nth-child(2) { border-left-color: #d9738f; }
-.intro-text .stats li:nth-child(3) { border-left-color: #e3a36a; }
+.intro-text .stats li:nth-child(2) { border-left-color: #60c1e5; }
+.intro-text .stats li:nth-child(3) { border-left-color: #1b365d; }
 
-.level-badge::before { content: ""; display: inline-block; width: 0.55rem; height: 0.55rem; margin-right: 0.5rem; border-radius: 50%; background: var(--lv); }
 .group-result { position: relative; }
 .option.is-selected { background: var(--accent-soft); }
 .support-note { background: var(--peach); border-left: 4px solid var(--accent); }
@@ -396,9 +396,9 @@ noscript p { margin: 2rem auto; width: min(100% - 2.5rem, var(--col)); padding: 
   animation: art-in 1.2s var(--ease) 0.35s both;
 }
 .hero-art .f-white { fill: rgba(255, 255, 255, 0.85); }
-.hero-art .f-pink { fill: #ffced8; }
-.hero-art .f-peach { fill: #ffe8c4; }
-.hero-art .f-blush { fill: #ffdddd; opacity: 0.8; }
+.hero-art .f-pink { fill: #a0e0ef; }
+.hero-art .f-peach { fill: #d6f1f8; }
+.hero-art .f-blush { fill: #bfe9f3; opacity: 0.85; }
 .hero-art .f-ink { fill: var(--ink); stroke: var(--ink); }
 @keyframes art-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
@@ -411,11 +411,23 @@ noscript p { margin: 2rem auto; width: min(100% - 2.5rem, var(--col)); padding: 
 }
 
 .intro-text .impact { list-style: none; padding-left: 0; gap: 1rem; }
-.impact li { display: grid; grid-template-columns: 2.75rem 1fr; gap: 1rem; align-items: start; }
-.impact .ico { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--accent-soft); }
-.impact .ico svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: var(--accent-dark); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.impact li { display: grid; grid-template-columns: 4.4rem 1fr; gap: 1rem; align-items: start; }
 
 .intro-text::before {
   -webkit-mask: linear-gradient(to bottom, #000 25%, transparent 100%);
   mask: linear-gradient(to bottom, #000 25%, transparent 100%);
 }
+
+/* ==========================================================
+   MINH HỌA VẼ thay cho icon: huy hiệu mức và ba ý "Ảnh hưởng"
+   ========================================================== */
+.badge-art { width: 1.6rem; height: 1.6rem; margin: -0.15rem 0.45rem -0.15rem -0.35rem; vertical-align: middle; fill: none; stroke: var(--lv-ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.badge-art .a { fill: var(--lv); }
+.badge-art .b { fill: #ffffff; }
+
+.ico-art { width: 4.4rem; height: 4.4rem; fill: none; stroke: var(--accent-dark); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.ico-art .bg { fill: #d6f1f8; stroke: none; }
+.ico-art .w { fill: #ffffff; }
+.ico-art .s1 { fill: #a0e0ef; }
+.ico-art .s2 { fill: #60c1e5; }
+.ico-art .n { fill: #1b365d; }

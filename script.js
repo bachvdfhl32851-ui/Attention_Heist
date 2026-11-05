@@ -463,7 +463,7 @@ function renderGroupSummary(box) {
     const head = el("div", "gr-head");
     head.append(
       el("h3", "gr-name", "Nhóm " + (gi + 1) + " · " + g.name),
-      el("span", "level-badge", level.badge)
+      levelBadge(level)
     );
 
     const scoreLine = el("div", "gr-score");
@@ -573,6 +573,19 @@ function renderLevelDetails(box) {
 
       box.appendChild(art);
     });
+}
+
+/* Huy hiệu mức có hình vẽ nhỏ: mầm cây (1), mặt trời sau mây (2), mây dông (3) */
+const BADGE_ART = {
+  1: '<path d="M12 21V12"/><path class="a" d="M12 13C7 13 4.500 10 4.500 6.500C9 6.500 12 9 12 13Z"/><path class="b" d="M12 11C12 7.500 14.500 5 19.500 5C19.500 9 16.500 11.500 12 11Z"/>',
+  2: '<circle class="a" cx="9" cy="9" r="4"/><path d="M9 2v1.500M2 9h1.500M4 4l1 1M14 4l-1 1"/><path class="b" d="M7 20a4 4 0 0 1 .6-7.900A5 5 0 0 1 17.300 13 3.500 3.500 0 0 1 17 20Z"/>',
+  3: '<path class="b" d="M6.500 14a4 4 0 0 1 .6-7.900A5 5 0 0 1 16.800 7 3.500 3.500 0 0 1 16.500 14Z"/><path class="a" d="M12.500 12l-3 5h3L11 22l4.500-6.500h-3l1.500-3.500z"/>'
+};
+function levelBadge(level) {
+  const badge = el("span", "level-badge");
+  badge.innerHTML = '<svg class="badge-art" viewBox="0 0 24 24" aria-hidden="true">' + (BADGE_ART[level.id] || "") + "</svg>";
+  badge.append(level.badge);
+  return badge;
 }
 
 function initResult() {
