@@ -333,7 +333,7 @@ function initGroup() {
 
       const key = document.createElement("span");
       key.className = "option-key";
-      key.textContent = String.fromCharCode(65 + i); 
+      key.textContent = String.fromCharCode(65 + i);
 
       const label = document.createElement("span");
       label.textContent = opt.text;
@@ -401,7 +401,6 @@ function initGroup() {
   });
 
   window.addEventListener("pageshow", (e) => { if (e.persisted) location.reload(); });
-
   function beginQuiz() {
     started = true;
     readyScreen.hidden = true;
@@ -421,6 +420,7 @@ function initGroup() {
     readyTitle.focus({ preventScroll: true });
   }
 }
+
 
 function renderGroupSummary(box) {
   GROUPS.forEach((g, gi) => {

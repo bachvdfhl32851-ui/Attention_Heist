@@ -48,6 +48,7 @@ h1, h2, h3, p, ul { margin: 0; }
 }
 h1:focus, h2:focus { outline: none; }
 
+
 .read-progress {
   position: fixed;
   inset: 0 0 auto 0;
@@ -62,6 +63,7 @@ h1:focus, h2:focus { outline: none; }
   background: var(--accent);
 }
 .read-progress.is-off { display: none; }
+
 
 .hero {
   padding-block: clamp(4rem, 14vh, 8rem) clamp(2rem, 6vh, 3.5rem);
@@ -432,6 +434,7 @@ h1:focus, h2:focus { outline: none; }
   font-size: 0.95rem;
   color: var(--muted);
 }
+
 
 .level-1 { --lv: #2f7d4f; --lv-ink: #1f5a37; --lv-soft: #dff0e5; }
 .level-2 { --lv: #b9770e; --lv-ink: #7a4a00; --lv-soft: #f8ebcf; }
