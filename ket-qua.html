@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kết quả — Attention Heist</title>
+  <meta name="description" content="Attention Heist: bài tự đánh giá giúp học sinh nhìn lại thói quen dùng mạng xã hội, khả năng tập trung và sức khỏe tinh thần.">
+  <meta name="theme-color" content="#ffe8c4">
+  <title>Attention Heist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2713%27 fill=%27%23b03560%27/%3E%3Ccircle cx=%2712%27 cy=%2711%27 r=%274%27 fill=%27%23fff%27 opacity=%27.55%27/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="result">
-
   <main>
-
     <section class="screen" id="screenResult" aria-labelledby="resultTitle">
-      <p class="result-label">Kết quả của bạn</p>
       <h2 class="result-title" id="resultTitle" tabindex="-1">Kết quả theo từng nhóm</h2>
       <p class="result-desc">Mỗi nhóm gồm 3 câu hỏi, điểm từ 0 đến 12. Kết quả giúp bạn hiểu thói quen hiện tại của mình, nhận diện những nguy cơ và biết nên bắt đầu thay đổi từ đâu.</p>
 
       <ol class="group-results" id="groupResults"></ol>
-
       <div id="levelDetails"></div>
 
       <p class="result-note">Đây là bảng tự đánh giá mang tính tham khảo, không phải chẩn đoán y khoa.</p>
+      <p class="support-note">Nếu bạn thấy quá tải hoặc không ổn kéo dài, hãy chia sẻ với phụ huynh, thầy cô hoặc người bạn tin tưởng. Học sinh dưới 18 tuổi có thể gọi tổng đài quốc gia bảo vệ trẻ em <strong>111</strong> (miễn phí).</p>
 
       <div class="result-actions">
         <button type="button" class="btn btn-primary" id="retryBtn">Làm lại bài test</button>
@@ -32,6 +32,6 @@
 
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

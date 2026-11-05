@@ -3,21 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Attention Heist: bài tự đánh giá giúp học sinh nhìn lại thói quen dùng mạng xã hội, khả năng tập trung và sức khỏe tinh thần.">
+  <meta name="theme-color" content="#ffe8c4">
   <title>Attention Heist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2713%27 fill=%27%23b03560%27/%3E%3Ccircle cx=%2712%27 cy=%2711%27 r=%274%27 fill=%27%23fff%27 opacity=%27.55%27/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="intro">
-  <div class="read-progress" id="readProgress" aria-hidden="true"><span></span></div>
-
   <main>
-
     <section class="screen" id="screenIntro" aria-labelledby="introTitle">
       <header class="hero">
+        <div class="hero-copy">
+        <svg class="lotus" viewBox="0 0 120 80" aria-hidden="true">
+          <path pathLength="1" d="M60 6C47 24 47 46 60 62C73 46 73 24 60 6Z"/>
+          <path pathLength="1" d="M60 62C36 56 24 40 22 22C41 26 54 40 60 62Z"/>
+          <path pathLength="1" d="M60 62C84 56 96 40 98 22C79 26 66 40 60 62Z"/>
+          <path pathLength="1" d="M60 62C30 66 12 56 4 40C26 38 46 46 60 62Z"/>
+          <path pathLength="1" d="M60 62C90 66 108 56 116 40C94 38 74 46 60 62Z"/>
+          <path pathLength="1" d="M18 72Q60 80 102 72"/>
+        </svg>
         <h1 id="introTitle" tabindex="-1">Attention Heist</h1>
         <p class="lead">Dự án nâng cao khả năng tập trung và giảm sự sao nhãng của học sinh</p>
+        </div>
+      <svg class="hero-art" viewBox="0 0 400 320" aria-hidden="true">
+        <circle cx="200" cy="160" r="128" class="f-blush" stroke="none"/>
+        <circle cx="200" cy="160" r="96" stroke-opacity=".25" stroke-dasharray="2 7"/>
+        <g transform="translate(292 84)">
+          <circle r="38" class="f-white"/><circle r="25"/><circle r="12" class="f-pink"/><circle r="3.5" class="f-ink" stroke="none"/>
+        </g>
+        <g transform="translate(96 96)">
+          <circle r="28" class="f-peach"/>
+          <path d="M0 -15V0L11 7"/><path d="M0 -24V-21M24 0H21M0 24V21M-24 0H-21" stroke-width="1.6"/>
+        </g>
+        <path d="M200 186C200 156 194 136 200 112"/>
+        <path class="f-peach" d="M199 150C176 148 164 134 162 118C184 120 197 132 199 150Z"/>
+        <path class="f-pink" d="M200 128C222 124 234 110 236 94C214 96 202 110 200 128Z"/>
+        <path class="f-white" d="M200 252C170 236 130 234 94 246V180C130 168 170 170 200 186Z"/>
+        <path class="f-white" d="M200 252C230 236 270 234 306 246V180C270 168 230 170 200 186Z"/>
+        <path d="M90 252C130 240 170 242 200 260C230 242 270 240 310 252" stroke-opacity=".6"/>
+        <path d="M112 198C136 192 160 194 184 202M112 214C136 208 160 210 184 218M112 230C130 226 148 228 166 233" stroke-opacity=".45" stroke-width="1.5"/>
+        <path d="M216 202C240 194 264 192 288 198M216 218C240 210 264 208 288 214" stroke-opacity=".45" stroke-width="1.5"/>
+        <g transform="translate(250 286) rotate(-8)">
+          <rect x="0" y="-6" width="72" height="12" rx="2" class="f-peach"/>
+          <rect x="-12" y="-6" width="12" height="12" rx="2" class="f-pink"/>
+          <path class="f-white" d="M72 -6L94 0L72 6Z"/><path d="M88 -2L94 0L88 2" class="f-ink"/>
+        </g>
+      </svg>
       </header>
 
       <article class="intro-text" id="introText">
@@ -33,10 +67,10 @@
         <p class="source">Nguồn: Tạp chí Y học dự phòng (2025); BMC Public Health (2025).</p>
 
         <h2>Ảnh hưởng của vấn đề</h2>
-        <ul>
-          <li><strong>Học tập:</strong> Bị gián đoạn sự tập trung, ảnh hưởng thời gian học tập.</li>
-          <li><strong>Tâm lý:</strong> Gây ra căng thẳng và áp lực từ môi trường trực tuyến.</li>
-          <li><strong>Lối sống:</strong> Dành ít thời gian cho vận động, nghỉ ngơi và tương tác trực tiếp.</li>
+        <ul class="impact">
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C7 4.5 10 4.8 12 6.5c2-1.7 5-2 8-1V18.5c-3-1-6-.7-8 1-2-1.7-5-2-8-1z"/><path d="M12 6.5v13"/></svg></span><span><strong>Học tập:</strong> Bị gián đoạn sự tập trung, ảnh hưởng thời gian học tập.</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2.2-6 4.2 12 2.2-6H21"/></svg></span><span><strong>Tâm lý:</strong> Gây ra căng thẳng và áp lực từ môi trường trực tuyến.</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></span><span><strong>Lối sống:</strong> Dành ít thời gian cho vận động, nghỉ ngơi và tương tác trực tiếp.</span></li>
         </ul>
       </article>
 
@@ -45,9 +79,11 @@
         <button type="button" class="btn btn-primary" id="startBtn" hidden>Bắt đầu làm bài</button>
       </div>
     </section>
+    1. thay tone màu: https://colorhunt.co/palette/1b365d005a9c60c1e5a0e0ef
+2. thay cho tôi mọi icon có sẵn thành element vẽ
 
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

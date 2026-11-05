@@ -59,10 +59,9 @@ const LEVELS = [
     id: 1,
     min: 0,
     range: "0–4 điểm",
-    icon: "🟢",
     badge: "Mức 1 – Xanh",
     title: "Bộ não “xanh”",
-    headline: "🎉 Chúc mừng! Bạn đang kiểm soát khá tốt thói quen sử dụng mạng xã hội.",
+    headline: "Chúc mừng! Bạn đang kiểm soát khá tốt thói quen sử dụng mạng xã hội.",
     desc: [
       "Nhìn chung, việc sử dụng nội dung số của bạn chưa cho thấy nhiều dấu hiệu đáng lo ngại theo bảng tự đánh giá này. Tuy nhiên, việc tiếp xúc thường xuyên với video ngắn và những nội dung liên tục kích thích sự chú ý vẫn có thể khiến bạn dễ xao nhãng nếu không kiểm soát tốt thời gian."
     ],
@@ -87,10 +86,9 @@ const LEVELS = [
     id: 2,
     min: 5,
     range: "5–8 điểm",
-    icon: "🟡",
     badge: "Mức 2 – Chớm vàng",
     title: "Bộ não “chớm vàng”",
-    headline: "⚠️ Bạn đang có một số thói quen sử dụng mạng xã hội cần được chú ý!",
+    headline: "Bạn đang có một số thói quen sử dụng mạng xã hội cần được chú ý!",
     desc: [
       "Kết quả cho thấy bạn có thể đang dành nhiều thời gian cho nội dung trực tuyến hoặc gặp khó khăn trong việc kiểm soát thói quen sử dụng. Nếu tình trạng này kéo dài, thời gian dành cho học tập, nghỉ ngơi và các hoạt động cần sự tập trung có thể bị thu hẹp."
     ],
@@ -135,10 +133,9 @@ const LEVELS = [
     id: 3,
     min: 9,
     range: "9–12 điểm",
-    icon: "🔴",
     badge: "Mức 3 – Báo động đỏ",
     title: "Bộ não “báo động đỏ”",
-    headline: "🚨 Đã đến lúc nghiêm túc nhìn lại thói quen sử dụng mạng xã hội của bạn!",
+    headline: "Đã đến lúc nghiêm túc nhìn lại thói quen sử dụng mạng xã hội của bạn!",
     desc: [
       "Điểm số của bạn cho thấy nhiều dấu hiệu cần được chú ý trong cách sử dụng nội dung số. Nếu bạn thường xuyên lướt mạng lâu hơn dự định, khó dừng lại hoặc để điện thoại ảnh hưởng đến việc học và giấc ngủ, bạn nên chủ động thay đổi thói quen ngay từ bây giờ."
     ],
@@ -189,6 +186,11 @@ const LEVELS = [
 ];
 
 const $ = (id) => document.getElementById(id);
+const IN_SUBFOLDER = document.body.dataset.page === "group";
+const ROOT = IN_SUBFOLDER ? "../" : "";
+const GROUP_DIR = IN_SUBFOLDER ? "" : "nhom_cau_hoi/";
+const groupPage = (n) => GROUP_DIR + "nhom-" + n + ".html";
+const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const TOTAL = GROUPS.reduce((s, g) => s + g.questions.length, 0);
 const MAX_PER_QUESTION = Math.max(...SCALE.map((o) => o.points));
@@ -254,18 +256,12 @@ function el(tag, className, text) {
 }
 
 function initIntro() {
-  const readProgress = $("readProgress");
   const introText = $("introText");
   const startHint = $("startHint");
   const startBtn = $("startBtn");
   let startUnlocked = false;
 
-
   function updateIntroScroll() {
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const ratio = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 1;
-    readProgress.firstElementChild.style.width = (ratio * 100) + "%";
-
     if (!startUnlocked) {
       const bottom = introText.getBoundingClientRect().bottom;
       if (bottom <= window.innerHeight - 24) unlockStart();
@@ -279,10 +275,26 @@ function initIntro() {
     startBtn.classList.add("is-revealed");
   }
 
-  window.addEventListener("scroll", updateIntroScroll, { passive: true });
-  window.addEventListener("resize", updateIntroScroll);
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; updateIntroScroll(); });
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
 
-  startBtn.addEventListener("click", () => { location.href = "nhom-1.html"; });
+  const statRows = document.querySelectorAll(".stats li");
+  if ("IntersectionObserver" in window && !REDUCED) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
+    }, { threshold: 0.35 });
+    statRows.forEach((r) => io.observe(r));
+  } else {
+    statRows.forEach((r) => r.classList.add("is-in"));
+  }
+
+  startBtn.addEventListener("click", () => { location.href = groupPage(1); });
 
   updateIntroScroll();
 }
@@ -316,24 +328,29 @@ function initGroup() {
     const overall = offset + current;
 
     quizCount.textContent = "Câu " + (overall + 1) + " / " + TOTAL;
-    const pct = Math.round((overall / TOTAL) * 100);
+    const pct = Math.round((answers.filter((a) => a !== null).length / TOTAL) * 100);
     quizBarFill.style.width = pct + "%";
     quizBar.setAttribute("aria-valuenow", pct);
 
     questionText.textContent = group.questions[current];
 
     optionsBox.innerHTML = "";
+    if (!REDUCED) {
+      [questionText, optionsBox].forEach((n) => { n.classList.remove("is-swap"); void n.offsetWidth; n.classList.add("is-swap"); });
+    }
     SCALE.forEach((opt, i) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "option";
       btn.setAttribute("role", "radio");
       btn.setAttribute("aria-checked", answers[overall] === i ? "true" : "false");
+      const focusIdx = answers[overall] === null ? 0 : answers[overall];
+      btn.tabIndex = i === focusIdx ? 0 : -1;
       if (answers[overall] === i) btn.classList.add("is-selected");
 
       const key = document.createElement("span");
       key.className = "option-key";
-      key.textContent = String.fromCharCode(65 + i);
+      key.textContent = String(i + 1);
 
       const label = document.createElement("span");
       label.textContent = opt.text;
@@ -352,8 +369,12 @@ function initGroup() {
   function selectOption(i) {
     answers[offset + current] = i;
     saveAnswers(answers);
+    const done = Math.round((answers.filter((a) => a !== null).length / TOTAL) * 100);
+    quizBarFill.style.width = done + "%";
+    quizBar.setAttribute("aria-valuenow", done);
     [...optionsBox.children].forEach((el2, idx) => {
       const on = idx === i;
+      el2.tabIndex = on ? 0 : -1;
       el2.classList.toggle("is-selected", on);
       el2.setAttribute("aria-checked", on ? "true" : "false");
     });
@@ -367,9 +388,9 @@ function initGroup() {
       renderQuestion();
       questionText.focus({ preventScroll: true });
     } else if (!isLastGroup) {
-      location.href = pageUrl("nhom-" + (groupNo + 1) + ".html", answers);
+      location.href = pageUrl(groupPage(groupNo + 1), answers);
     } else {
-      location.href = pageUrl("ket-qua.html", answers);
+      location.href = pageUrl(ROOT + "ket-qua.html", answers);
     }
   }
 
@@ -380,7 +401,7 @@ function initGroup() {
       questionText.focus({ preventScroll: true });
     } else if (groupNo > 1) {
       const prev = GROUPS[groupIndex - 1];
-      location.href = pageUrl("nhom-" + (groupNo - 1) + ".html", answers, prev.questions.length - 1);
+      location.href = pageUrl(groupPage(groupNo - 1), answers, prev.questions.length - 1);
     }
   }
 
@@ -395,12 +416,21 @@ function initGroup() {
     const n = parseInt(e.key, 10);
     if (n >= 1 && n <= SCALE.length) {
       selectOption(n - 1);
+      optionsBox.children[n - 1].focus({ preventScroll: true });
+    } else if (["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft"].includes(e.key)) {
+      e.preventDefault();
+      const cur = answers[offset + current];
+      const step = e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : -1;
+      const next = cur === null ? (step > 0 ? 0 : SCALE.length - 1) : (cur + step + SCALE.length) % SCALE.length;
+      selectOption(next);
+      optionsBox.children[next].focus({ preventScroll: true });
     } else if (e.key === "Enter" && answers[offset + current] !== null && document.activeElement.tagName !== "BUTTON") {
       goNext();
     }
   });
 
   window.addEventListener("pageshow", (e) => { if (e.persisted) location.reload(); });
+
   function beginQuiz() {
     started = true;
     readyScreen.hidden = true;
@@ -421,7 +451,6 @@ function initGroup() {
   }
 }
 
-
 function renderGroupSummary(box) {
   GROUPS.forEach((g, gi) => {
     const score = groupScore(gi);
@@ -429,11 +458,12 @@ function renderGroupSummary(box) {
     const level = pickLevel(score);
 
     const item = el("li", "group-result level-" + level.id);
+    item.style.setProperty("--i", gi);
 
     const head = el("div", "gr-head");
     head.append(
       el("h3", "gr-name", "Nhóm " + (gi + 1) + " · " + g.name),
-      el("span", "level-badge", level.icon + " " + level.badge)
+      el("span", "level-badge", level.badge)
     );
 
     const scoreLine = el("div", "gr-score");
@@ -451,11 +481,21 @@ function renderGroupSummary(box) {
     item.append(head, scoreLine, scale);
     box.appendChild(item);
 
+    const numEl = scoreLine.firstChild;
+    if (!REDUCED && score > 0) {
+      numEl.textContent = "0";
+      const t0 = performance.now() + gi * 110 + 250, dur = 900;
+      const tick = (t) => {
+        const k = Math.min(Math.max((t - t0) / dur, 0), 1);
+        numEl.textContent = String(Math.round(score * (1 - Math.pow(1 - k, 3))));
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
     marker.style.left = "0%";
     const pos = max === 0 ? 100 : (score / max) * 100;
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      marker.style.left = pos + "%";
-    }));
+    setTimeout(() => { marker.style.left = pos + "%"; }, REDUCED ? 0 : 350 + gi * 110);
   });
 }
 
@@ -474,7 +514,7 @@ function renderLevelDetails(box) {
 
       art.append(
         el("p", "result-label", "Điểm nhóm " + level.range.replace(" điểm", "") + " · Áp dụng cho: " + groups.join(", ")),
-        el("h2", "level-title", level.icon + " Mức " + level.id + " · " + level.title),
+        el("h2", "level-title", "Mức " + level.id + " · " + level.title),
         el("p", "level-headline", level.headline)
       );
       level.desc.forEach((t) => art.appendChild(el("p", "result-desc", t)));
@@ -543,7 +583,7 @@ function initResult() {
     } else {
       let g = 0;
       while (firstMissing >= groupOffset(g + 1) && g < GROUPS.length - 1) g++;
-      location.replace(pageUrl("nhom-" + (g + 1) + ".html", answers));
+      location.replace(pageUrl(groupPage(g + 1), answers));
     }
     return;
   }
@@ -551,15 +591,25 @@ function initResult() {
   renderGroupSummary($("groupResults"));
   renderLevelDetails($("levelDetails"));
 
-  $("retryBtn").addEventListener("click", () => { location.href = "nhom-1.html"; });
+  $("retryBtn").addEventListener("click", () => { location.href = groupPage(1); });
   $("homeBtn").addEventListener("click", () => { location.href = "index.html"; });
 
   window.scrollTo({ top: 0, behavior: "instant" });
   $("resultTitle").focus({ preventScroll: true });
 }
 
+function addDecor() {
+  const layer = document.createElement("div");
+  layer.className = "decor";
+  layer.setAttribute("aria-hidden", "true");
+  layer.innerHTML = '<svg class="leaf-a" viewBox="0 0 160 220" aria-hidden="true"><path d="M80 216C78 150 92 90 72 8"/><path d="M79 168C55 163 40 148 38 128C60 130 76 144 79 168Z"/><path d="M81 150C104 145 120 130 122 110C100 112 84 126 81 150Z"/><path d="M79 118C58 112 46 98 44 80C64 82 77 95 79 118Z"/><path d="M80 96C100 90 112 76 114 58C94 60 82 74 80 96Z"/><path d="M76 62C62 56 54 44 54 30C68 32 76 44 76 62Z"/></svg>' + '<svg class="leaf-b" viewBox="0 0 160 220" aria-hidden="true"><path d="M80 216C78 150 92 90 72 8"/><path d="M79 168C55 163 40 148 38 128C60 130 76 144 79 168Z"/><path d="M81 150C104 145 120 130 122 110C100 112 84 126 81 150Z"/><path d="M79 118C58 112 46 98 44 80C64 82 77 95 79 118Z"/><path d="M80 96C100 90 112 76 114 58C94 60 82 74 80 96Z"/><path d="M76 62C62 56 54 44 54 30C68 32 76 44 76 62Z"/></svg>';
+  document.body.prepend(layer);
+}
+
 (function boot() {
   const page = document.body.dataset.page;
+  document.documentElement.classList.add("js");
+  addDecor();
   if (page === "intro") initIntro();
   else if (page === "group") initGroup();
   else if (page === "result") initResult();
