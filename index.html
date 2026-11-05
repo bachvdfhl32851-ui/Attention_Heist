@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thối não (Brain Rot) – Khi giải trí số ảnh hưởng đến tư duy của giới trẻ</title>
+  <title>Attention Heist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="intro">
+
   <div class="read-progress" id="readProgress" aria-hidden="true"><span></span></div>
 
   <main>
     <section class="screen" id="screenIntro" aria-labelledby="introTitle">
       <header class="hero">
-        <h1 id="introTitle" tabindex="-1">Thối não (Brain Rot)</h1>
-        <p class="lead">Khi giải trí số có nguy cơ ảnh hưởng đến tư duy của giới trẻ.</p>
+        <h1 id="introTitle" tabindex="-1">Attention Heist</h1>
+        <p class="lead">Dự án nâng cao khả năng tập trung và giảm sự sao nhãng của học sinh</p>
       </header>
 
       <article class="intro-text" id="introText">
@@ -37,88 +38,11 @@
           <li><strong>Tâm lý:</strong> Gây ra căng thẳng và áp lực từ môi trường trực tuyến.</li>
           <li><strong>Lối sống:</strong> Dành ít thời gian cho vận động, nghỉ ngơi và tương tác trực tiếp.</li>
         </ul>
-
-        <h2>Độ quan trọng của đề tài</h2>
-        <p class="level">Mức độ: <strong>Rất cao</strong></p>
-        <ol>
-          <li><strong>Bảo vệ năng lực tư duy độc lập:</strong> Nhận diện những nguy cơ đối với khả năng tập trung, suy nghĩ sâu và phân tích vấn đề của thế hệ trẻ.</li>
-          <li><strong>Nâng cao chất lượng tiếp nhận tri thức:</strong> Làm rõ sự khác biệt giữa việc tiếp cận nhiều thông tin và thực sự hiểu, ghi nhớ, vận dụng kiến thức.</li>
-          <li><strong>Nhận thức ảnh hưởng của công nghệ đến con người:</strong> Tìm hiểu cách mạng xã hội, thuật toán và nội dung số định hình thói quen, hành vi và nhận thức của người dùng.</li>
-          <li><strong>Thích nghi với xã hội số:</strong> Thúc đẩy năng lực chọn lọc thông tin, tư duy phản biện và sử dụng công nghệ một cách chủ động, có trách nhiệm.</li>
-          <li><strong>Bảo vệ sự phát triển toàn diện của thế hệ trẻ:</strong> Quan tâm đến mối liên hệ giữa thói quen sử dụng nội dung số với đời sống tinh thần, học tập và các mối quan hệ xã hội.</li>
-        </ol>
-
-        <h2>Độ thú vị của đề tài</h2>
-        <ul>
-          <li>Brain Rot là thuật ngữ nổi bật trong văn hóa Internet hiện đại, được Oxford lựa chọn làm Từ của năm 2024.</li>
-          <li>Hiện tượng này xuất hiện gắn liền với video ngắn, meme, nội dung giải trí và văn hóa mạng.</li>
-          <li>Học sinh có thể dễ dàng nhận diện dấu hiệu thực tế trong trải nghiệm của bản thân.</li>
-        </ul>
-
-        <blockquote class="pullquote">
-          <p>“Trong thời đại nội dung số ngắn và liên tục, liệu cách chúng ta tiêu thụ thông tin có đang thay đổi khả năng tập trung, tư duy và học tập của thế hệ trẻ? Làm thế nào để sử dụng Internet mà không bị chính nó chi phối?”</p>
-        </blockquote>
-
-        <h2>Mục tiêu chính</h2>
-        <ul>
-          <li><strong>Đánh giá mức độ tập trung:</strong> Xây dựng công cụ giúp người dùng kiểm tra và nhận biết khả năng tập trung của bản thân thông qua các bài kiểm tra tương tác.</li>
-          <li><strong>Cá nhân hóa giải pháp:</strong> Phân tích kết quả để xác định những yếu tố gây xao nhãng và đề xuất phương pháp cải thiện phù hợp với từng người.</li>
-          <li><strong>Hình thành thói quen tích cực:</strong> Giúp người dùng từng bước nâng cao khả năng tập trung, quản lý thời gian và sử dụng thiết bị số hiệu quả hơn.</li>
-        </ul>
-
-        <h2>Ý nghĩa hướng đến</h2>
-        <ul>
-          <li><strong>Đối với cá nhân:</strong> Giúp mỗi người hiểu rõ bản thân, chủ động kiểm soát sự chú ý và nâng cao hiệu quả học tập, làm việc.</li>
-          <li><strong>Đối với cộng đồng:</strong> Lan tỏa ý thức sử dụng công nghệ thông minh, hạn chế sự xao nhãng và xây dựng môi trường học tập, làm việc tích cực.</li>
-        </ul>
       </article>
 
       <div class="start-zone" id="startZone">
         <p class="start-hint" id="startHint">Kéo xuống và đọc hết phần giới thiệu để mở bài test.</p>
         <button type="button" class="btn btn-primary" id="startBtn" hidden>Bắt đầu làm bài</button>
-      </div>
-    </section>
-
-    <section class="screen" id="screenQuiz" aria-labelledby="questionText" hidden>
-      <div class="quiz-top">
-        <p class="quiz-count" id="quizCount" aria-live="polite">Câu 1 / 8</p>
-        <div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ariavaluenow="0" id="quizBar">
-          <span id="quizBarFill"></span>
-        </div>
-      </div>
-
-      <h2 class="question" id="questionText" tabindex="-1"></h2>
-
-      <div class="options" id="options" role="radiogroup" aria-labelledby="questionText"></div>
-
-      <div class="quiz-nav">
-        <button type="button" class="btn btn-ghost" id="backBtn">Câu trước</button>
-        <button type="button" class="btn btn-primary" id="nextBtn" disabled>Câu tiếp theo</button>
-      </div>
-      <p class="key-hint">Mẹo: nhấn phím 1–4 để chọn nhanh đáp án.</p>
-    </section>
-
-    <section class="screen" id="screenResult" aria-labelledby="resultTitle" hidden>
-      <p class="result-label">Kết quả của bạn</p>
-      <div class="score-line">
-        <span class="score-num" id="scoreNum">0</span>
-        <span class="score-max" id="scoreMax">/ 32 điểm</span>
-      </div>
-
-      <div class="scale" aria-hidden="true">
-        <div class="scale-track"><span class="scale-marker" id="scaleMarker"></span></div>
-        <div class="scale-ends"><span id="scaleMin">8</span><span id="scaleMaxLabel">32</span></div>
-      </div>
-
-      <h2 class="result-title" id="resultTitle" tabindex="-1"></h2>
-      <p class="result-desc" id="resultDesc"></p>
-
-      <h3 class="tips-title">Gợi ý cho bạn</h3>
-      <ul class="tips" id="resultTips"></ul>
-
-      <div class="result-actions">
-        <button type="button" class="btn btn-primary" id="retryBtn">Làm lại bài test</button>
-        <button type="button" class="btn btn-ghost" id="homeBtn">Về trang giới thiệu</button>
       </div>
     </section>
 
