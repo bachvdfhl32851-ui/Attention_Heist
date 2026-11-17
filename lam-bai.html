@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Attention Heist: bài tự đánh giá giúp học sinh nhìn lại thói quen dùng mạng xã hội, khả năng tập trung và sức khỏe tinh thần.">
+  <meta name="theme-color" content="#eaf8fc">
+  <title>Làm bài – Bộ câu hỏi CFQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M16 4C11 10 11 18 16 24C21 18 21 10 16 4Z%27 fill=%27%2360c1e5%27 stroke=%27%23005a9c%27 stroke-width=%271.6%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M16 24C8 22 4 17 3 11C10 12 14 17 16 24Z%27 fill=%27%23a0e0ef%27 stroke=%27%23005a9c%27 stroke-width=%271.6%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M16 24C24 22 28 17 29 11C22 12 18 17 16 24Z%27 fill=%27%23a0e0ef%27 stroke=%27%23005a9c%27 stroke-width=%271.6%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="quiz">
+  <main>
+    <section class="screen" id="screenReady" aria-labelledby="readyTitle">
+      <p class="group-label">25 câu hỏi</p>
+      <h1 class="ready-title" id="readyTitle" tabindex="-1">Bộ câu hỏi CFQ</h1>
+      <p class="ready-en">Cognitive Failures Questionnaire</p>
+      <p class="ready-info">Các câu hỏi dưới đây đề cập đến những sai sót nhỏ trong hoạt động thường ngày mà mọi người đôi khi gặp phải. Hãy cho biết trong 6 tháng gần đây, bạn gặp những tình huống này với tần suất như thế nào, từ “Không bao giờ” đến “Rất thường xuyên”.</p>
+      <p class="ready-ask">Bạn đã sẵn sàng chưa?</p>
+      <button type="button" class="btn btn-primary" id="readyBtn">Sẵn sàng</button>
+    </section>
+
+    <section class="screen" id="screenQuiz" aria-labelledby="questionText" hidden>
+      <div class="quiz-top">
+        <p class="group-label">Bộ câu hỏi CFQ</p>
+        <p class="quiz-count" id="quizCount" aria-live="polite"></p>
+        <div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="quizBar">
+          <span id="quizBarFill"></span>
+        </div>
+      </div>
+
+      <h2 class="question" id="questionText" tabindex="-1"></h2>
+
+      <div class="options" id="options" role="radiogroup" aria-labelledby="questionText"></div>
+
+      <div class="quiz-nav">
+        <button type="button" class="btn btn-ghost" id="backBtn">Câu trước</button>
+        <button type="button" class="btn btn-primary" id="nextBtn" disabled>Câu tiếp theo</button>
+      </div>
+      <p class="key-hint">Mẹo: nhấn phím 1–5 hoặc dùng phím mũi tên để chọn nhanh đáp án.</p>
+    </section>
+
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
